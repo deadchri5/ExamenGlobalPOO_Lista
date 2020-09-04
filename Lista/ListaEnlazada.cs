@@ -43,7 +43,7 @@ namespace Lista
 
         public void imprimir() {
             if (estaVacia()) {
-                Console.WriteLine("La lista " + this.nombre + " esta vacia....");
+                Console.WriteLine($"La lista {this.nombre} esta vacia...");
             }
             else {
                 Console.WriteLine("Lista "+ this.nombre + " :");
@@ -53,10 +53,10 @@ namespace Lista
                     return;
                 }
                 while (actual.getNodoSiguiente() != null) {
-                    Console.WriteLine(actual.getDato() +"\r");
+                    Console.WriteLine(actual.getDato());
                     actual = actual.getNodoSiguiente();
                     if (actual.getNodoSiguiente() == null) {
-                        Console.WriteLine(actual.getDato()+"\r");
+                        Console.WriteLine(actual.getDato());
                     }
                 }
             }
