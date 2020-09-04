@@ -1,0 +1,13 @@
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.exe
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.deps.json
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.runtimeconfig.json
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.runtimeconfig.dev.json
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.dll
+C:\Users\deadchri5_\source\repos\Lista\Lista\bin\Debug\netcoreapp3.1\Lista.pdb
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.csprojAssemblyReference.cache
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.AssemblyInfoInputs.cache
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.AssemblyInfo.cs
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.csproj.CoreCompileInputs.cache
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.dll
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.pdb
+C:\Users\deadchri5_\source\repos\Lista\Lista\obj\Debug\netcoreapp3.1\Lista.genruntimeconfig.cache
