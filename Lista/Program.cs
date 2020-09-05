@@ -51,6 +51,8 @@ namespace Lista
                 Console.WriteLine("## LISTA ENLAZADA ##");
                 Console.WriteLine("1) Agregar a la lista");
                 Console.WriteLine("2) Imprimir la lista");
+                Console.WriteLine("3) Buscar datos");
+                Console.WriteLine("4) Borrar nodo");
                 auxiliarTemporal = Console.ReadLine();
                 opcion = int.Parse(auxiliarTemporal);
                 switch (opcion) {
@@ -60,11 +62,26 @@ namespace Lista
                         Console.WriteLine("Numero: ");
                         xy = Console.ReadLine();
                         x = int.Parse(xy);
-                        miLista.agregarNodo(x);
+                        miLista.agregarNodoAlFinal(x);
                         Console.Clear();
                         break;
                     case 2:
                         miLista.imprimir();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 3:
+                        miLista.buscarNodo();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 4:
+                        int y;
+                        String yx;
+                        Console.Write("Nodo a elminar: ");
+                        yx= Console.ReadLine();
+                        y = int.Parse(yx);
+                        miLista.borrarNodo(y);
                         Console.ReadKey();
                         Console.Clear();
                         break;

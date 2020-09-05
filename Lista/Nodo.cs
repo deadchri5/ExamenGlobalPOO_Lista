@@ -40,5 +40,9 @@ namespace Lista
         public int getDato() {
             return this.dato;
         }
+
+        ~Nodo() {
+            //Destructor de nodos
+        }
     }
 }
