@@ -62,7 +62,7 @@ namespace Lista
                         Console.WriteLine("Numero: ");
                         xy = Console.ReadLine();
                         x = int.Parse(xy);
-                        miLista.agregarNodoAlFinal(x);
+                        miLista.agregarNodo(x);
                         Console.Clear();
                         break;
                     case 2:
@@ -71,14 +71,17 @@ namespace Lista
                         Console.Clear();
                         break;
                     case 3:
-                        miLista.buscarNodo();
+                        Console.Write("Ingresa el dato que deseas buscar: ");
+                        String hola = Console.ReadLine();
+                        int dato = Convert.ToInt32(hola);
+                        miLista.buscarNodo(dato);
                         Console.ReadKey();
                         Console.Clear();
                         break;
                     case 4:
                         int y;
                         String yx;
-                        Console.Write("Nodo a elminar: ");
+                        Console.Write("Poscion del nodo que vas a eliminar: ");
                         yx= Console.ReadLine();
                         y = int.Parse(yx);
                         miLista.borrarNodo(y);

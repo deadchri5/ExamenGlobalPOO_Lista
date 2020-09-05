@@ -42,7 +42,6 @@ namespace Lista
         }
 
         ~Nodo() {
-            //Destructor de nodos
         }
     }
 }

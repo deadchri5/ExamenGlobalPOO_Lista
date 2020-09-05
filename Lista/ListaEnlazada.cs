@@ -27,7 +27,7 @@ namespace Lista
             return primero == null;
         }
 
-        public void agregarNodoAlFinal(int _dato) {
+        public void agregarNodo(int _dato) {
             if (estaVacia()){
                 primero = new Nodo(_dato);
             }
@@ -49,40 +49,37 @@ namespace Lista
                 Console.Write($"Lista {this.nombre}: ");
                 Nodo actual = primero;
                 if (actual.getNodoSiguiente() == null) {
-                    Console.WriteLine(actual.getDato());
+                    Console.WriteLine($"|{actual.getDato()}| -> NULL");
                     return;
                 }
                 while (actual.getNodoSiguiente() != null) {
-                    Console.Write(actual.getDato() + " -> ");
+                    Console.Write($" |{actual.getDato()}| ->");
                     actual = actual.getNodoSiguiente();
                     if (actual.getNodoSiguiente() == null) {
-                        Console.Write(actual.getDato());
+                        Console.Write($" |{actual.getDato()}| -> NULL");
                     }
                 }
             }
         }
 
-        public void buscarNodo() {
+        public void buscarNodo(int _dato) {
             if (estaVacia()) {
                 Console.WriteLine("Primero debes agregar elementos...");
             }
             else {
-                Console.Write("Ingresa el elemento que buscas: ");
                 int contador = 0;
-                String line = Console.ReadLine();
-                int elementoBuscado = int.Parse(line);
                 Nodo actual = primero;
 
                 //Si lista solo contiente un elemeto
                 if (actual.getNodoSiguiente() == null) {
-                    Console.Write($"El elemento buscado esta en la posicion: {contador}");
+                    Console.Write($"Se encontro dato en pos: {contador}");
+                    return;
                 }
 
                 while (actual.getNodoSiguiente() != null) {
                     //Busco en mis elementos de la lista
-                    if (actual.getDato() == elementoBuscado) {
-                        Console.Write(contador);
-                        Console.Write(", ");
+                    if (actual.getDato() == _dato) {
+                        Console.WriteLine($"Se encontro dato en pos: {contador}");
                     }
 
                     actual = actual.getNodoSiguiente();
@@ -90,8 +87,8 @@ namespace Lista
 
                     //Busco en mi ultimo elemento de la lista (Que apunta a Null)
                     if (actual.getNodoSiguiente() == null) {
-                        if (actual.getDato() == elementoBuscado) {
-                            Console.Write(contador);
+                        if (actual.getDato() == _dato) {
+                            Console.WriteLine($"Se encontro dato en pos: {contador}");
                         }
                     }
                     
@@ -106,28 +103,42 @@ namespace Lista
             }
             else {
                 Nodo actual = primero;
-                //Borra si solo hay un nodo
+
+                //Borra si SOLO hay un nodo en la lista
                 if (actual.getNodoSiguiente() == null && _posicion == 0) {
                     primero = null;
+                    return;
                 }
 
-                //Borra el primer nodo cuando la lista tiene mas de un elemento
-                if (actual.getNodoSiguiente() != null && _posicion == 0) {
-                    actual = actual.getNodoSiguiente();
-                    Console.WriteLine(actual.getDato());
-                    primero = actual;
-                }
-
-
+                Nodo anterior = null;
                 while (actual.getNodoSiguiente() != null) {
-                    if (_posicion+1 == contador) {
-                        actual = null;
+                    if (contador == _posicion) {
+                        if (contador == 0) {
+                            actual = actual.getNodoSiguiente();
+                            primero = actual;
+                            return;
+                        }
+                        anterior.setNodoSiguiente(actual.getNodoSiguiente());
+                        return;
                     }
-                    actual = actual.getNodoSiguiente();
+
                     contador++;
+                    anterior = actual;
+                    actual = actual.getNodoSiguiente();
+
+                    //Si se quiere borrar el ultimo nodo
+                    if (actual.getNodoSiguiente() == null && contador == _posicion) {
+                        anterior.setNodoSiguiente(null);
+                        return;
+                    }
+
                 }
 
             }
+        }
+
+        ~ListaEnlazada() { 
+        
         }
 
     }
