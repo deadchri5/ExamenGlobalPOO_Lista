@@ -11,15 +11,8 @@ namespace Lista
 {
     class ListaEnlazada {
         private Nodo primero;
-        private String nombre;
 
         public ListaEnlazada() {
-            this.nombre = "Nueva lista";
-            this.primero = null;
-        }
-
-        public ListaEnlazada(String _nombre) {
-            this.nombre = _nombre;
             this.primero = null;
         }
 
@@ -41,58 +34,80 @@ namespace Lista
             }
         }
 
-        public void imprimir() {
-            if (estaVacia()) {
-                Console.WriteLine($"La lista {this.nombre} esta vacia...");
+        public void imprimir(Object tipo) {
+            String tipoEstructura = "";
+            Nodo actual = null;
+
+            if (tipo.GetType() == typeof(Cola)){
+                Cola nueva = (Cola)tipo;
+                actual = nueva.getNodoPrincipio();
+                tipoEstructura = "Cola: ";
+            }
+
+            if (tipo.GetType() == typeof(ListaEnlazada)){
+                actual = primero;
+                tipoEstructura = "Lista: ";
+            }
+
+            if (actual == null) {
+                Console.WriteLine($"La lista esta vacia...");
             }
             else {
-                Console.Write($"Lista {this.nombre}: ");
-                Nodo actual = primero;
+                Console.Write(tipoEstructura);
                 if (actual.getNodoSiguiente() == null) {
-                    Console.WriteLine($"|{actual.getDato()}| -> NULL");
+                    Console.WriteLine($"|{actual.getDato()}|");
                     return;
                 }
                 while (actual.getNodoSiguiente() != null) {
                     Console.Write($" |{actual.getDato()}| ->");
                     actual = actual.getNodoSiguiente();
                     if (actual.getNodoSiguiente() == null) {
-                        Console.Write($" |{actual.getDato()}| -> NULL");
+                        Console.Write($" |{actual.getDato()}|");
                     }
                 }
             }
         }
 
-        public void buscarNodo(int _dato) {
-            if (estaVacia()) {
-                Console.WriteLine("Primero debes agregar elementos...");
-            }
-            else {
-                int contador = 0;
-                Nodo actual = primero;
+        public void buscarNodo(int _dato, Object tipo) {
+            Nodo actual = null;
+            int contador = 0;
 
-                //Si lista solo contiente un elemeto
-                if (actual.getNodoSiguiente() == null) {
-                    Console.Write($"Se encontro dato en pos: {contador}");
-                    return;
+            if (tipo.GetType() == typeof(Cola)) {
+                Cola nueva = (Cola)tipo;
+                actual = nueva.getNodoPrincipio();
+            }
+
+            if (tipo.GetType() == typeof(ListaEnlazada)) {
+                actual = primero;
+            }
+
+            //Compruebo que mi nodo no este vacio para poder continuar
+            if (actual == null) {
+                return;
+            }
+
+            //Si lista solo contiente un elemeto
+            if (actual.getNodoSiguiente() == null && actual.getDato() == _dato) {
+                Console.Write($"Se encontro dato en pos: {contador}");
+                return;
+            }
+
+            //Busco en mis elementos de la lista
+            while (actual.getNodoSiguiente() != null) {
+                if (actual.getDato() == _dato) {
+                    Console.WriteLine($"Se encontro dato en pos: {contador}");
                 }
 
-                while (actual.getNodoSiguiente() != null) {
-                    //Busco en mis elementos de la lista
+                actual = actual.getNodoSiguiente();
+                contador++;
+
+                //Busco en mi ultimo elemento de la lista (Que apunta a Null)
+                if (actual.getNodoSiguiente() == null) {
                     if (actual.getDato() == _dato) {
                         Console.WriteLine($"Se encontro dato en pos: {contador}");
                     }
-
-                    actual = actual.getNodoSiguiente();
-                    contador++;
-
-                    //Busco en mi ultimo elemento de la lista (Que apunta a Null)
-                    if (actual.getNodoSiguiente() == null) {
-                        if (actual.getDato() == _dato) {
-                            Console.WriteLine($"Se encontro dato en pos: {contador}");
-                        }
-                    }
-                    
                 }
+
             }
         }
 

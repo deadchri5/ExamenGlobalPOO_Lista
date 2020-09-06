@@ -10,6 +10,7 @@ using System.Text;
 namespace Lista
 {
     class Cola : ListaEnlazada {
+
         private Nodo principio;
         private Nodo final;
         private int limiteDeDatos;
@@ -42,7 +43,7 @@ namespace Lista
                 if (contador == this.limiteDeDatos) {
                     Console.WriteLine($"Haz llegado al limite de datos que admite la cola ({contador})");
                 }
-                else { 
+                else {
                     Nodo nuevo = new Nodo(_dato);
                     if (principio != final) {
                         nuevo.setNodoSiguiente(principio);
@@ -58,7 +59,6 @@ namespace Lista
         }
 
         public void desencolar() {
-
             if (colaVacia()) {
                 Console.WriteLine("La cola esta vacia...");
             }
@@ -69,46 +69,21 @@ namespace Lista
                 if (actual.getNodoSiguiente() == null) {
                     principio = null;
                     final = null;
+                    contador = 0;
                     return;
                 }
 
                 while (actual.getNodoSiguiente() != null) {
                     anterior = actual;
                     actual = actual.getNodoSiguiente();
-                    if (actual.getNodoSiguiente() == null)
-                    {
+                    if (actual.getNodoSiguiente() == null) {
+                        contador--;
                         anterior.setNodoSiguiente(null);
                     }
                 }
             }
-          
-        }
-
-        public void imprimirCola() {
-            if (colaVacia()) {
-                Console.WriteLine("La cola esta vacia...");
-            }
-            else { 
-                Nodo actual = principio;
-
-                if (actual.getNodoSiguiente() == null){
-                    Console.Write($"|{actual.getDato()}| -> Fin");
-                    return;
-                }
-
-                while (actual.getNodoSiguiente() != null) {
-                    Console.Write($"|{actual.getDato()}| ->");
-                    actual = actual.getNodoSiguiente();
-                    if (actual.getNodoSiguiente() == null) {
-                        Console.Write($"|{actual.getDato()}| -> Fin");
-                    }
-                }
-
-            }
 
         }
-
-
         //Set y get
         public void setNodoPrincipio(Nodo _principio) {
             this.principio = _principio;

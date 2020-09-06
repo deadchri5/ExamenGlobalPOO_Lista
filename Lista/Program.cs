@@ -13,7 +13,8 @@ namespace Lista
     {
         static void Main(string[] args)
         {
-            while (true) { 
+            while (true) {
+            Console.Clear();
             String line;
             char opcion;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -35,7 +36,6 @@ namespace Lista
                 default:
                     Console.WriteLine("Selecciona una opcion valida....");
                     Console.ReadKey();
-                    Console.Clear();
                     break;
             }
             }
@@ -46,8 +46,9 @@ namespace Lista
             Console.Clear();
             int opcion;
             String auxiliarTemporal;
-            ListaEnlazada miLista = new ListaEnlazada("Numeros");
+            ListaEnlazada miLista = new ListaEnlazada();
             while (true) {
+                Console.Clear();
                 Console.WriteLine("## LISTA ENLAZADA ##");
                 Console.WriteLine("1) Agregar a la lista");
                 Console.WriteLine("2) Imprimir la lista");
@@ -57,13 +58,18 @@ namespace Lista
                 opcion = int.Parse(auxiliarTemporal);
                 switch (opcion) {
                     case 1:
-                        //miLista.agregarNodo(x);
+                        String line = Console.ReadLine();
+                        int x = Convert.ToInt32(line);
+                        miLista.agregarNodo(x);
+                        Console.ReadKey();
                         break;
                     case 2:
-                        //miLista.imprimir();
+                        miLista.imprimir(miLista);
+                        Console.ReadKey();
                         break;
                     case 3:
-                        //miLista.buscarNodo(dato);
+                        miLista.buscarNodo(5, miLista);
+                        Console.ReadKey();
                         break;
                     case 4:
                         //miLista.borrarNodo(y);
@@ -97,7 +103,6 @@ namespace Lista
                         String line1 = Console.ReadLine();
                         int op1 = Convert.ToInt32(line1);
                         miCola.setLimiteDeDatos(op1);
-                        Console.WriteLine(miCola.getLimiteDeDatos());
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -115,11 +120,14 @@ namespace Lista
                         Console.Clear();
                         break;
                     case 4:
-                        miCola.imprimirCola();
+                        miCola.imprimir(miCola);
                         Console.ReadLine();
                         Console.Clear();
                         break;
                     case 5:
+                        miCola.buscarNodo(5, miCola);
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("Porfavor ingrese una opcion valida");
