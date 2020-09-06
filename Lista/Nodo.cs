@@ -19,11 +19,6 @@ namespace Lista
             this.siguiente = null;
         }
 
-        public Nodo(int _dato, Nodo _siguiente) {
-            this.dato = _dato;
-            this.siguiente = _siguiente;
-        }
-
         //Metodos set y get
         public void setNodoSiguiente(Nodo _siguiente) {
             this.siguiente = _siguiente;

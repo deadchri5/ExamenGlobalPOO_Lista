@@ -57,36 +57,16 @@ namespace Lista
                 opcion = int.Parse(auxiliarTemporal);
                 switch (opcion) {
                     case 1:
-                        int x;
-                        String xy;
-                        Console.WriteLine("Numero: ");
-                        xy = Console.ReadLine();
-                        x = int.Parse(xy);
-                        miLista.agregarNodo(x);
-                        Console.Clear();
+                        //miLista.agregarNodo(x);
                         break;
                     case 2:
-                        miLista.imprimir();
-                        Console.ReadKey();
-                        Console.Clear();
+                        //miLista.imprimir();
                         break;
                     case 3:
-                        Console.Write("Ingresa el dato que deseas buscar: ");
-                        String hola = Console.ReadLine();
-                        int dato = Convert.ToInt32(hola);
-                        miLista.buscarNodo(dato);
-                        Console.ReadKey();
-                        Console.Clear();
+                        //miLista.buscarNodo(dato);
                         break;
                     case 4:
-                        int y;
-                        String yx;
-                        Console.Write("Poscion del nodo que vas a eliminar: ");
-                        yx= Console.ReadLine();
-                        y = int.Parse(yx);
-                        miLista.borrarNodo(y);
-                        Console.ReadKey();
-                        Console.Clear();
+                        //miLista.borrarNodo(y);
                         break;
                     default:
                         Console.WriteLine("Porfavor ingrese una opcion valida");
@@ -97,8 +77,58 @@ namespace Lista
             }
         }
 
-        public static void mostrarMenuCola() { 
-            
+        public static void mostrarMenuCola() {
+            Console.Clear();
+            Cola miCola = new Cola();
+            while (true) { 
+                Console.WriteLine("## Menu cola ##");
+                Console.WriteLine("1) Establecer tamaño");
+                Console.WriteLine("2) Encolar");
+                Console.WriteLine("3) Desencolar");
+                Console.WriteLine("4) Imprimir");
+                Console.WriteLine("5) Buscar");
+
+                String line = Console.ReadLine();
+                int op = Convert.ToInt32(line);
+
+                switch (op) {
+                    case 1:
+                        Console.Write("Ingresa el tamaño de la cola: ");
+                        String line1 = Console.ReadLine();
+                        int op1 = Convert.ToInt32(line1);
+                        miCola.setLimiteDeDatos(op1);
+                        Console.WriteLine(miCola.getLimiteDeDatos());
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 2:
+                        Console.Write("Ingresa dato: ");
+                        String line2 = Console.ReadLine();
+                        int op2 = Convert.ToInt32(line2);
+                        miCola.encolar(op2);
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 3:
+                        miCola.desencolar();
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 4:
+                        miCola.imprimirCola();
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine("Porfavor ingrese una opcion valida");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+
+            }
         }
     }
 }
