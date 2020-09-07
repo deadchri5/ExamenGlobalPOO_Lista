@@ -42,6 +42,8 @@ namespace Lista
             else {
                 if (contador == this.limiteDeDatos) {
                     Console.WriteLine($"Haz llegado al limite de datos que admite la cola ({contador})");
+                    Console.ReadLine();
+                    return;
                 }
                 else {
                     Nodo nuevo = new Nodo(_dato);
@@ -53,7 +55,6 @@ namespace Lista
                     }
                     principio = nuevo;
                     nuevo.setNodoSiguiente(final);
-                    contador++;
                 }
             }
         }
@@ -102,6 +103,7 @@ namespace Lista
 
         public void setLimiteDeDatos(int _limite) {
             this.limiteDeDatos = _limite;
+            Console.WriteLine($"Hora el limite es {_limite}");
         }
 
         public int getLimiteDeDatos() {

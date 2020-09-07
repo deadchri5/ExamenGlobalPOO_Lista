@@ -11,72 +11,81 @@ namespace Lista
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             while (true) {
-            Console.Clear();
-            String line;
-            char opcion;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Christian Yesael Ochoa Hdez 20110469");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("---- Examen POO ---");
-            Console.WriteLine("a) ESTRUCTURA LISTA");
-            Console.WriteLine("b) ESTRUCTURA COLA");
-            line = Console.ReadLine();
-            opcion = char.Parse(line);
 
-            switch (opcion) {
-                case 'a':
-                    mostrarMenuLista();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Christian Yesael Ochoa Hdez 20110469");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("---- Examen POO ---");
+                Console.WriteLine("1) ESTRUCTURA LISTA");
+                Console.WriteLine("2) ESTRUCTURA COLA");
+
+                int opcion = ingresarValor();
+
+                switch (opcion) {
+                    case 1:
+                        mostrarMenuLista();
                     break;
-                case 'b':
-                    mostrarMenuCola();
+                    case 2:
+                        mostrarMenuCola();
                     break;
-                default:
-                    Console.WriteLine("Selecciona una opcion valida....");
-                    Console.ReadKey();
+                    default:
+                        Console.WriteLine("Selecciona una opcion valida....");
+                        Console.ReadKey();
                     break;
-            }
+                }
             }
             
         }
 
         public static void mostrarMenuLista() {
             Console.Clear();
+            int val;
             int opcion;
-            String auxiliarTemporal;
             ListaEnlazada miLista = new ListaEnlazada();
+
             while (true) {
                 Console.Clear();
                 Console.WriteLine("## LISTA ENLAZADA ##");
                 Console.WriteLine("1) Agregar a la lista");
                 Console.WriteLine("2) Imprimir la lista");
-                Console.WriteLine("3) Buscar datos");
+                Console.WriteLine("3) Buscar dato(s)");
                 Console.WriteLine("4) Borrar nodo");
-                auxiliarTemporal = Console.ReadLine();
-                opcion = int.Parse(auxiliarTemporal);
+                Console.WriteLine("5) Volver al menu principial");
+                opcion = ingresarValor();
                 switch (opcion) {
                     case 1:
-                        String line = Console.ReadLine();
-                        int x = Convert.ToInt32(line);
-                        miLista.agregarNodo(x);
-                        Console.ReadKey();
+                        Console.WriteLine("Ingresa el ENTERO que deseas agregar a la lista, de no ser entero se asignara el valor 0");
+                        val = ingresarValor();
+                        miLista.agregarNodo(val);
                         break;
                     case 2:
+                        Console.WriteLine("Imprimir la lista.... \n");
                         miLista.imprimir(miLista);
                         Console.ReadKey();
                         break;
                     case 3:
-                        miLista.buscarNodo(5, miLista);
+                        Console.WriteLine("Ingresa el Valor que quieres buscar (retorna posicion en lista)");
+                        val = ingresarValor();
+                        miLista.buscarNodo(val, miLista);
                         Console.ReadKey();
                         break;
                     case 4:
-                        //miLista.borrarNodo(y);
-                        break;
-                    default:
-                        Console.WriteLine("Porfavor ingrese una opcion valida");
+                        Console.WriteLine("Dame la poscion del nodo:");
+                        val = ingresarValor();
+                        miLista.borrarNodo(val);
+                        Console.WriteLine("Ok.");
                         Console.ReadKey();
+                        break;
+                    case 5:
+                        Console.WriteLine("La lista se ha eliminado, pulsa cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        return;
+                    default:
                         Console.Clear();
                         break;
                 }
@@ -84,59 +93,76 @@ namespace Lista
         }
 
         public static void mostrarMenuCola() {
-            Console.Clear();
+            int val;
+            int opcion;
             Cola miCola = new Cola();
-            while (true) { 
+
+            while (true) {
+                Console.Clear();
                 Console.WriteLine("## Menu cola ##");
                 Console.WriteLine("1) Establecer tamaño");
                 Console.WriteLine("2) Encolar");
                 Console.WriteLine("3) Desencolar");
                 Console.WriteLine("4) Imprimir");
                 Console.WriteLine("5) Buscar");
+                Console.WriteLine("6) Volver al menu principal");
 
-                String line = Console.ReadLine();
-                int op = Convert.ToInt32(line);
+                opcion = ingresarValor();
 
-                switch (op) {
+                switch (opcion) {
                     case 1:
-                        Console.Write("Ingresa el tamaño de la cola: ");
-                        String line1 = Console.ReadLine();
-                        int op1 = Convert.ToInt32(line1);
-                        miCola.setLimiteDeDatos(op1);
+                        Console.WriteLine("Asigna el tamaño de la Cola");
+                        val = ingresarValor();
+                        miCola.setLimiteDeDatos(val);
                         Console.ReadLine();
-                        Console.Clear();
                         break;
                     case 2:
-                        Console.Write("Ingresa dato: ");
-                        String line2 = Console.ReadLine();
-                        int op2 = Convert.ToInt32(line2);
-                        miCola.encolar(op2);
-                        Console.ReadLine();
-                        Console.Clear();
+                        Console.WriteLine("Ingresa el ENTERO a encolar, de no ser ENTERO se encolara un '0'");
+                        val = ingresarValor();
+                        miCola.encolar(val);
                         break;
                     case 3:
+                        Console.Write("Se ha desencolado la estructura en una poscion");
                         miCola.desencolar();
                         Console.ReadLine();
-                        Console.Clear();
                         break;
                     case 4:
+                        Console.Write("Imprimir cola... \n");
                         miCola.imprimir(miCola);
                         Console.ReadLine();
-                        Console.Clear();
                         break;
                     case 5:
-                        miCola.buscarNodo(5, miCola);
+                        Console.WriteLine("Ingresa el Valor que quieres buscar (retorna posicion en cola)");
+                        val = ingresarValor();
+                        miCola.buscarNodo(val, miCola);
                         Console.ReadLine();
-                        Console.Clear();
                         break;
+                    case 6:
+                        Console.WriteLine("La Cola se ha eliminado, pulsa cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        return;
                     default:
                         Console.WriteLine("Porfavor ingrese una opcion valida");
                         Console.ReadKey();
-                        Console.Clear();
                         break;
                 }
 
             }
         }
+
+        public static int ingresarValor() {
+            Console.Write("---> ");
+            String nuevaLinea = Console.ReadLine();
+            try {
+                int op = Convert.ToInt32(nuevaLinea);
+                return op;
+            }
+            catch (Exception e) { 
+                Console.WriteLine("La entrada no esta en el formato correcto.");
+                Console.ReadKey();
+                return 0;
+            }
+        }
+
     }
 }
