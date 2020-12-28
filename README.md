@@ -1,5 +1,5 @@
-# ExamenGlobalPOO_Lista
-Examen global para Programacion Orientada a Objetos de 2 Semestre ing.
+# Examen Global para la materia programación orientada a objetos (POO).
+Aplicación para 2do semestre de ing de desarrollo de software de Ceti Colomos.
 
 ## INFO
 Consiste en una estructura de datos lista enlazada y otra estructura de datos cola.
